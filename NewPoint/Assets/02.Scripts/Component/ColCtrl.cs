@@ -5,14 +5,14 @@ using UnityEngine;
 public class ColCtrl : MonoBehaviour
 {
     [SerializeField] private Animator Animator;
-    [SerializeField] private Animation Animation;
+    [SerializeField] private AnimationClip AnimationClip;
 
     private readonly int collect = Animator.StringToHash("ColTrigger");
 
     private void Start()
     {
         Animator = GetComponent<Animator>();
-        Animation = GetComponent<Animation>();
+        AnimationClip = Resources.Load<AnimationClip>("Animation/Collected Animation");
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -27,7 +27,7 @@ public class ColCtrl : MonoBehaviour
 
     IEnumerator CountCOl()
     {
-        yield return new WaitForSeconds(Animation.clip.length);
+        yield return new WaitForSeconds(AnimationClip.length);
         Destroy(this.gameObject);
     }
 }

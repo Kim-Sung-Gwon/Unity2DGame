@@ -9,12 +9,12 @@ public class CamFollow : MonoBehaviour
 
     [SerializeField] private float speed = 5;
     [SerializeField] private Vector2 offset;
-    [SerializeField] private float minX = 0;
-    [SerializeField] private float maxX = 18;
-    [SerializeField] private float minY = 0;
-    [SerializeField] private float maxY = 20;
-    [SerializeField] private float camHalfwidth = 0;
-    [SerializeField] private float camHalfheight = 0;
+    public float minX;
+    public float maxX;
+    public float minY;
+    public float maxY;
+    public float camHalfwidth;
+    public float camHalfheight;
 
     void Start()
     {

@@ -33,11 +33,17 @@ public class PlayerInput : MonoBehaviour
         if (rb.velocity.y < 0)
         {
             Debug.DrawRay(rb.position, Vector3.down, Color.red);
-            RaycastHit2D ray = Physics2D.Raycast(rb.position, Vector3.down, 1, LayerMask.GetMask("Floor"));
+            RaycastHit2D ray = Physics2D.Raycast(rb.position, Vector3.down, 1, LayerMask.GetMask("Floor", "Box"));
             if (ray.collider != null && ray.distance < 1f)
             {
                 playerAni.JumpAni(false);
                 JumpCount = 0;
+            }
+
+            if (!ray && JumpCount == 0)
+            {
+                playerAni.JumpAni(true);
+                JumpCount++;
             }
         }
 
@@ -70,6 +76,6 @@ public class PlayerInput : MonoBehaviour
 
     void CameraOutLine()
     {
-        tr.position = new Vector2(Mathf.Clamp(tr.position.x, -8.0f, 26.0f), tr.position.y);
+        tr.position = new Vector2(Mathf.Clamp(tr.position.x, -8.5f, 26.5f), tr.position.y);
     }
 }

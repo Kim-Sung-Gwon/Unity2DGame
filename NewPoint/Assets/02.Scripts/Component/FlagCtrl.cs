@@ -15,7 +15,7 @@ public class FlagCtrl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (col.gameObject.CompareTag("Player") && GameManger.G_Instance.Count <= 4)
         {
             animator.SetBool(Check, true);
         }

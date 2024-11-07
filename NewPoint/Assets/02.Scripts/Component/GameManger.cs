@@ -8,6 +8,9 @@ public class GameManger : MonoBehaviour
     public static GameManger G_Instance;
 
     [SerializeField] private UIManager uiManager;
+    [SerializeField] private Transform PlayerTr;
+    [SerializeField] private Transform SpawnPoint;
+
     public bool IsGameOver;
 
     float sec;
@@ -15,14 +18,18 @@ public class GameManger : MonoBehaviour
     int hor;
 
     public int Count { get; private set; }
+    public int DieCount {  get; private set; }
 
-    void Start()
+    void Awake()
     {
         if (G_Instance == null) G_Instance = this;
         else if (G_Instance != this) Destroy(gameObject);
 
         uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
-        //CountUpDate();
+        SpawnPoint = GameObject.Find("SpawnPoint").GetComponent<Transform>();
+        PlayerTr = Resources.Load<Transform>("Player");
+
+        CreatePlayer();
     }
 
     void PlayTime()
@@ -43,27 +50,34 @@ public class GameManger : MonoBehaviour
 
     void Update()
     {
-        if (!IsGameOver)
-        {
-            PlayTime();
-        }
-    }
-
-    public void GameOver()
-    {
-        IsGameOver = true;
-        uiManager.JoyStickUI.gameObject.SetActive(false);
-        uiManager.P_gameOver.gameObject.SetActive(true);
+        PlayTime();
     }
 
     public void ColCount()
     {
         Count++;
-        CountUpDate();
+        uiManager.ItemCount.text = $": <color=#0000ff>{Count}</color>";
     }
 
-    void CountUpDate()
+    public void Diecount()
     {
-        uiManager.AppleCount.text = $": <color=#0000ff>{Count}</color>";
+        DieCount++;
+        uiManager.DieCountText.text = $"<color=#ff0000>Die Count : {DieCount}</color>";
+    }
+
+    public void CreatePlayer()
+    {
+        Instantiate(PlayerTr, SpawnPoint.position, SpawnPoint.rotation);
+    }
+
+    public void ReCreatePlayer(string objName, Transform obj)
+    {
+        Transform objPoint = GameObject.Find(objName).transform;
+        if (obj.gameObject.activeSelf == false)
+        {
+            obj.transform.position = objPoint.position;
+            obj.transform.rotation = objPoint.rotation;
+            obj.gameObject.SetActive(true);
+        }
     }
 }

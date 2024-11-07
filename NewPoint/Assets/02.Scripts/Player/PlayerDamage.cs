@@ -6,6 +6,8 @@ public class PlayerDamage : MonoBehaviour
 {
     [SerializeField] private PlayerAnimator animator;
     [SerializeField] private PlayerInput playerinput;
+    [SerializeField] private Transform tr;
+    [SerializeField] private GameManger gameManger;
 
     [SerializeField] float TramJump;
     [SerializeField] float UpPower;
@@ -14,20 +16,15 @@ public class PlayerDamage : MonoBehaviour
     {
         animator = GetComponent<PlayerAnimator>();
         playerinput = GetComponent<PlayerInput>();
+        tr = GetComponent<Transform>();
+        gameManger = GameObject.Find("GameManager").GetComponent<GameManger>();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Thorn"))
-        {
-            animator.DieAni();
-            GameManger.G_Instance.IsGameOver = true;
-        }
-
         if (col.gameObject.CompareTag("Trampolin"))
         {
-            int dirY = transform.position.y - col.transform.position.y > 0 ?
-                (int)TramJump : -(int)TramJump;
+            int dirY = transform.position.y - col.transform.position.y > 0 ? (int)TramJump : -(int)TramJump;
             playerinput.rb.AddForce(new Vector2(0, dirY * TramJump * UpPower), ForceMode2D.Impulse);
             animator.JumpAni(true);
             if (playerinput.JumpCount == 0)
@@ -35,17 +32,28 @@ public class PlayerDamage : MonoBehaviour
                 playerinput.JumpCount++;
             }
         }
+    }
 
+    private void OnCollisionEnter2D(Collision2D col)
+    {
         if (col.gameObject.CompareTag("Blink"))
         {
-            DiePlayer();
+            StartCoroutine(DiePlayer());
+        }
+
+        if (col.gameObject.CompareTag("Thorn"))
+        {
+            StartCoroutine(DiePlayer());
         }
     }
 
     IEnumerator DiePlayer()
     {
         animator.DieAni();
-        yield return new WaitForSeconds(1);
-        GameManger.G_Instance.GameOver();
+        gameManger.Diecount();
+        yield return new WaitForSeconds(0.3f);
+        gameObject.SetActive(false);
+        gameManger.ReCreatePlayer("SpawnPoint", tr);
+        playerinput.JumpCount = 0;
     }
 }

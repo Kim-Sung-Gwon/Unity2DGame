@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TrampolinCtrl : MonoBehaviour
 {
-    [SerializeField] private Transform player;
     [SerializeField] private Transform tr;
     [SerializeField] private Animator animator;
 
@@ -12,7 +11,6 @@ public class TrampolinCtrl : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         tr = GetComponent<Transform>();
         animator = GetComponent<Animator>();
     }

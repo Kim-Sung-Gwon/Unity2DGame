@@ -7,19 +7,21 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager U_Instance;
 
-    public RectTransform JoyStickUI;
+    [SerializeField] private RectTransform JoyStickUI;
 
-    [SerializeField] private RectTransform GameUI;
     public Text playTime;
-    public RectTransform P_gameOver;
-    public Text AppleCount;
+    public RectTransform ItemPanel;
+    public Text ItemCount;
+    public Image ItemImage;
+    public Text DieCountText;
 
     void Start()
     {
         JoyStickUI = GameObject.Find("Canvas_JoyStick").GetComponent<RectTransform>();
-        GameUI = GameObject.Find("Canvas_GameUI").GetComponent<RectTransform>();
-        playTime = GameUI.transform.GetChild(0).GetComponent<Text>();
-        P_gameOver = GameUI.transform.GetChild(1).GetComponent<RectTransform>();
-        AppleCount = GameUI.transform.GetChild(3).GetComponent<Text>();
+        playTime = JoyStickUI.transform.GetChild(2).GetComponent<Text>();
+        ItemPanel = JoyStickUI.transform.GetChild(3).GetComponent <RectTransform>();
+        ItemCount = ItemPanel.GetChild(1).GetComponent<Text>();
+        ItemImage = ItemPanel.GetChild(0).GetComponent<Image>();
+        DieCountText = JoyStickUI.transform.GetChild(4).GetComponent<Text>();
     }
 }

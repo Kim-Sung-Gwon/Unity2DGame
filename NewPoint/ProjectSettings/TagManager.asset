@@ -8,18 +8,19 @@ TagManager:
   - Thorn
   - Trampolin
   - Blink
+  - DieZone
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 
   - 
   - 
   - Floor
-  - 
+  - Box
   - 
   - 
   - 
