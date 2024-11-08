@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager U_Instance;
+    public static UIManager Instance;
 
-    [SerializeField] private RectTransform JoyStickUI;
+    [SerializeField] private RectTransform GameUI;
 
     public Text playTime;
     public RectTransform ItemPanel;
@@ -17,11 +17,11 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        JoyStickUI = GameObject.Find("Canvas_JoyStick").GetComponent<RectTransform>();
-        playTime = JoyStickUI.transform.GetChild(2).GetComponent<Text>();
-        ItemPanel = JoyStickUI.transform.GetChild(3).GetComponent <RectTransform>();
-        ItemCount = ItemPanel.GetChild(1).GetComponent<Text>();
+        GameUI = GameObject.Find("Canvas_JoyStick").GetComponent<RectTransform>();
+        playTime = GameUI.transform.GetChild(3).GetComponent<Text>();
+        ItemPanel = GameUI.transform.GetChild(4).GetComponent <RectTransform>();
         ItemImage = ItemPanel.GetChild(0).GetComponent<Image>();
-        DieCountText = JoyStickUI.transform.GetChild(4).GetComponent<Text>();
+        ItemCount = ItemPanel.GetChild(1).GetComponent<Text>();
+        DieCountText = ItemPanel.GetChild(2).GetComponent<Text>();
     }
 }

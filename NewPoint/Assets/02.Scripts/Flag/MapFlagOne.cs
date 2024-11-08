@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColCtrl : MonoBehaviour
+public class MapFlagOne : MonoBehaviour
 {
     [SerializeField] private Animator Animator;
     [SerializeField] private AnimationClip AnimationClip;
@@ -17,7 +17,7 @@ public class ColCtrl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (col.gameObject.CompareTag("Player") && GameManager.Instance.Count >= 4)
         {
             Animator.SetTrigger(collect);
             StartCoroutine(CountCOl());

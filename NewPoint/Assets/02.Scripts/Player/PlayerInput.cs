@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private Transform tr;
-    public Rigidbody2D rb;
     [SerializeField] private PlayerAnimator playerAni;
     [SerializeField] private SpriteRenderer S_Renderer;
+    public Rigidbody2D rb;
 
     Vector2 moveDir = Vector2.zero;
     [SerializeField] private float moveSpeed = 4;

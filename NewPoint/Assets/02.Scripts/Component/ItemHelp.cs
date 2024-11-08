@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColCtrl : MonoBehaviour
+public class ItemHelp : MonoBehaviour
 {
     [SerializeField] private Animator Animator;
     [SerializeField] private AnimationClip AnimationClip;
@@ -19,14 +19,14 @@ public class ColCtrl : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            Animator.SetTrigger(collect);
             StartCoroutine(CountCOl());
-            GameManager.Instance.ColCount();
+            Destroy(this.gameObject);
         }
     }
 
     IEnumerator CountCOl()
     {
+        Animator.SetTrigger(collect);
         yield return new WaitForSeconds(AnimationClip.length);
         Destroy(this.gameObject);
     }

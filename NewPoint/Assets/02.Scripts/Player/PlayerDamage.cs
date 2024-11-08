@@ -7,7 +7,6 @@ public class PlayerDamage : MonoBehaviour
     [SerializeField] private PlayerAnimator animator;
     [SerializeField] private PlayerInput playerinput;
     [SerializeField] private Transform tr;
-    [SerializeField] private GameManger gameManger;
 
     [SerializeField] float TramJump;
     [SerializeField] float UpPower;
@@ -17,7 +16,6 @@ public class PlayerDamage : MonoBehaviour
         animator = GetComponent<PlayerAnimator>();
         playerinput = GetComponent<PlayerInput>();
         tr = GetComponent<Transform>();
-        gameManger = GameObject.Find("GameManager").GetComponent<GameManger>();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -50,10 +48,10 @@ public class PlayerDamage : MonoBehaviour
     IEnumerator DiePlayer()
     {
         animator.DieAni();
-        gameManger.Diecount();
+        GameManager.Instance.Diecount();
         yield return new WaitForSeconds(0.3f);
         gameObject.SetActive(false);
-        gameManger.ReCreatePlayer("SpawnPoint", tr);
+        GameManager.Instance.ReCreatePlayer("SpawnPoint", tr);
         playerinput.JumpCount = 0;
     }
 }
