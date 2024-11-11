@@ -46,8 +46,6 @@ public class PlayerInput : MonoBehaviour
                 JumpCount++;
             }
         }
-
-        CameraOutLine();
     }
 
     public void OnMove(InputValue value)
@@ -74,8 +72,8 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    void CameraOutLine()
+    public void CameraOutLine(float min, float max)
     {
-        tr.position = new Vector2(Mathf.Clamp(tr.position.x, -8.5f, 26.5f), tr.position.y);
+        tr.position = new Vector2(Mathf.Clamp(tr.position.x, min, max), tr.position.y);
     }
 }

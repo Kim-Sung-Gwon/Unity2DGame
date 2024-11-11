@@ -12,10 +12,16 @@ EditorBuildSettings:
     path: Assets/01.Scenes/LobbyScene.unity
     guid: 0ee15f4d8c2c8084aa34fd881a42a942
   - enabled: 1
-    path: Assets/01.Scenes/Map_1.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
     path: Assets/01.Scenes/Map_Help.unity
     guid: 76aa36aef0b7dd84c8690b711434499c
+  - enabled: 1
+    path: Assets/01.Scenes/Map_Piairie-1.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/01.Scenes/Map_Piairie-2.unity
+    guid: e89e99ca8de1d2a4aae7a4bc005d42ff
+  - enabled: 1
+    path: Assets/01.Scenes/Map_Cave-1.unity
+    guid: 17e9930d7991edd4bbd3c54463405165
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: fbb0e8604e93476489d686a92803f461, type: 2}

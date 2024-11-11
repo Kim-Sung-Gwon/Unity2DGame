@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 0}
+  clip: {fileID: 7400000, guid: 1c04355448c045546a8d6e1364ac3f3d, type: 2}
 --- !u!114 &8009944854231155096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,9 +328,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tr: {fileID: 0}
-  rb: {fileID: 0}
   playerAni: {fileID: 0}
   S_Renderer: {fileID: 0}
+  rb: {fileID: 0}
   moveSpeed: 4
   jumpPower: 5
   JumpCount: 0
@@ -348,6 +349,5 @@ MonoBehaviour:
   animator: {fileID: 0}
   playerinput: {fileID: 0}
   tr: {fileID: 0}
-  gameManger: {fileID: 0}
   TramJump: 2
   UpPower: 3

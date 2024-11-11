@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
     [SerializeField] private Animator Animator;
+    public AnimationClip clip;
 
     private readonly int Move = Animator.StringToHash("MoveFloat");
     private readonly int Jump = Animator.StringToHash("JumpBool");

@@ -8,8 +8,8 @@ public class PlayerDamage : MonoBehaviour
     [SerializeField] private PlayerInput playerinput;
     [SerializeField] private Transform tr;
 
-    [SerializeField] float TramJump;
-    [SerializeField] float UpPower;
+    public float TramJump;
+    public float UpPower;
 
     private void Start()
     {
@@ -34,12 +34,7 @@ public class PlayerDamage : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Blink"))
-        {
-            StartCoroutine(DiePlayer());
-        }
-
-        if (col.gameObject.CompareTag("Thorn"))
+        if (col.gameObject.CompareTag("Blink") || col.gameObject.CompareTag("Thorn") || col.gameObject.CompareTag("DieZone"))
         {
             StartCoroutine(DiePlayer());
         }
@@ -49,7 +44,7 @@ public class PlayerDamage : MonoBehaviour
     {
         animator.DieAni();
         GameManager.Instance.Diecount();
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(animator.clip.length);
         gameObject.SetActive(false);
         GameManager.Instance.ReCreatePlayer("SpawnPoint", tr);
         playerinput.JumpCount = 0;

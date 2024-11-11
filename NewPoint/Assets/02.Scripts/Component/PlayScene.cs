@@ -14,26 +14,31 @@ public class PlayScene : MonoBehaviour
     public void MapHelp()
     {
         SceneManager.LoadScene("Map_Help");
+        Time.timeScale = 1.0f;
     }
 
-    public void Map_1()
+    public void Piairie_1()
     {
-        SceneManager.LoadScene("Map_1");
+        SceneManager.LoadScene("Map_Piairie-1");
+        Time.timeScale = 1.0f;
     }
 
-    public void Map_2()
+    public void Piairie_2()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("Map_Piairie-2");
+        Time.timeScale = 1.0f;
     }
 
-    public void Map_3()
+    public void Cave_1()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("Map_Cave-1");
+        Time.timeScale = 1.0f;
     }
 
-    public void Map_4()
+    public void Cave_2()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("Map_Cave-2");
+        Time.timeScale = 1.0f;
     }
 
     public void Quit()
