@@ -9,6 +9,7 @@ TagManager:
   - Trampolin
   - Blink
   - DieZone
+  - Ladder
   layers:
   - Default
   - TransparentFX

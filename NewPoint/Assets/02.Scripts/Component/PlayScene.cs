@@ -41,6 +41,18 @@ public class PlayScene : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
+    public void Temple_1()
+    {
+        SceneManager.LoadScene("Map_Temple-1");
+        Time.timeScale = 1.0f;
+    }
+
+    public void Temple_2()
+    {
+        SceneManager.LoadScene("Map_Temple-2");
+        Time.timeScale = 1.0f;
+    }
+
     public void Quit()
     {
 #if UNITY_EDITOR

@@ -11,6 +11,8 @@ public class PlayerDamage : MonoBehaviour
     public float TramJump;
     public float UpPower;
 
+    public bool isLadder;
+
     private void Start()
     {
         animator = GetComponent<PlayerAnimator>();
@@ -30,6 +32,19 @@ public class PlayerDamage : MonoBehaviour
                 playerinput.JumpCount++;
             }
         }
+
+        if (col.gameObject.CompareTag("Ladder"))
+        {
+            isLadder = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Ladder"))
+        {
+            isLadder = false;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -46,7 +61,7 @@ public class PlayerDamage : MonoBehaviour
         GameManager.Instance.Diecount();
         yield return new WaitForSeconds(animator.clip.length);
         gameObject.SetActive(false);
-        GameManager.Instance.ReCreatePlayer("SpawnPoint", tr);
+        GameManager.Instance.ReCreateObject("SpawnPoint", tr);
         playerinput.JumpCount = 0;
     }
 }

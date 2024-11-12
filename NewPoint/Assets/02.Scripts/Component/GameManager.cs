@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
         Instantiate(PlayerTr, SpawnPoint.position, SpawnPoint.rotation);
     }
 
-    public void ReCreatePlayer(string objName, Transform obj)
+    public void ReCreateObject(string objName, Transform obj)
     {
         Transform objPoint = GameObject.Find(objName).transform;
         if (obj.gameObject.activeSelf == false)

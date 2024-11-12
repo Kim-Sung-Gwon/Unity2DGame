@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class CamFollow : MonoBehaviour
 {
-    [SerializeField] private Transform player;
-    [SerializeField] private Camera cam;
-    [SerializeField] private PlayerInput input;
+    private Transform player;
+    private Camera cam;
+    private PlayerInput input;
 
-    [SerializeField] private float speed = 5;
-    [SerializeField] private Vector2 offset;
+    private float speed = 5;
+    private Vector2 offset;
     public float minX;
     public float maxX;
     public float minY;
     public float maxY;
-    public float camHalfwidth;
-    public float camHalfheight;
 
     public float left;
     public float right;
+
+    float camHalfwidth;
+    float camHalfheight;
 
     void Start()
     {

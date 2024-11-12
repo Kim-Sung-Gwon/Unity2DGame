@@ -8,6 +8,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private Transform tr;
     [SerializeField] private PlayerAnimator playerAni;
     [SerializeField] private SpriteRenderer S_Renderer;
+    [SerializeField] private PlayerDamage playerDamage;
     public Rigidbody2D rb;
 
     Vector2 moveDir = Vector2.zero;
@@ -22,6 +23,7 @@ public class PlayerInput : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerAni = GetComponent<PlayerAnimator>();
         S_Renderer = GetComponent<SpriteRenderer>();
+        playerDamage = GetComponent<PlayerDamage>();
     }
 
     void FixedUpdate()
@@ -46,12 +48,21 @@ public class PlayerInput : MonoBehaviour
                 JumpCount++;
             }
         }
+
+        if (playerDamage.isLadder == true)
+        {
+            speed.y = moveDir.y;
+            rb.velocity = speed;
+            rb.gravityScale = 0f;
+        }
+        else if (playerDamage.isLadder == false)
+            rb.gravityScale = 1f;
     }
 
     public void OnMove(InputValue value)
     {
         Vector2 dir = value.Get<Vector2>();
-        moveDir = new Vector2(dir.x * moveSpeed, 0);
+        moveDir = new Vector2(dir.x * moveSpeed, dir.y * moveSpeed);
         if (dir.x != 0)
             S_Renderer.flipX = dir.x < 0;
         playerAni.MoveAni(dir);
