@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CamFollow : MonoBehaviour
 {
-    private Transform player;
-    private Camera cam;
-    private PlayerInput input;
+    [SerializeField] private Camera cam;
+    [SerializeField] private Transform player;
+    [SerializeField] private PlayerInput input;
 
     private float speed = 5;
     private Vector2 offset;
@@ -23,8 +23,8 @@ public class CamFollow : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         cam = Camera.main;
+        player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         input = GameObject.FindWithTag("Player").GetComponent<PlayerInput>();
     }
 

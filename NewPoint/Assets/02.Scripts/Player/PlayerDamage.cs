@@ -8,8 +8,8 @@ public class PlayerDamage : MonoBehaviour
     [SerializeField] private PlayerInput playerinput;
     [SerializeField] private Transform tr;
 
-    public float TramJump;
-    public float UpPower;
+    public float TramJump = 2;
+    public float UpPower = 3;
 
     public bool isLadder;
 
@@ -57,11 +57,13 @@ public class PlayerDamage : MonoBehaviour
 
     IEnumerator DiePlayer()
     {
+        playerinput.rb.simulated = false;
         animator.DieAni();
         GameManager.Instance.Diecount();
         yield return new WaitForSeconds(animator.clip.length);
         gameObject.SetActive(false);
         GameManager.Instance.ReCreateObject("SpawnPoint", tr);
         playerinput.JumpCount = 0;
+        playerinput.rb.simulated = true;
     }
 }

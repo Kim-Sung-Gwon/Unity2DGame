@@ -220,7 +220,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -335,7 +335,6 @@ MonoBehaviour:
   moveSpeed: 4
   jumpPower: 5
   JumpCount: 0
-  isLadder: 0
 --- !u!114 &2453089444353993610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,3 +352,4 @@ MonoBehaviour:
   tr: {fileID: 0}
   TramJump: 2
   UpPower: 3
+  isLadder: 0

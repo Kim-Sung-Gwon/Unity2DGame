@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MuneCtrl : MonoBehaviour
 {
+    public static MuneCtrl Instance;
+
     [SerializeField] private RectTransform Canvas;
     [SerializeField] private RectTransform MunePanel;
     [SerializeField] private RectTransform MuneImage;
@@ -14,8 +16,8 @@ public class MuneCtrl : MonoBehaviour
     void Start()
     {
         isPause = false;
-        Canvas = GameObject.Find("Canvas_JoyStick").GetComponent<RectTransform>();
-        MunePanel = Canvas.transform.GetChild(1).GetComponent<RectTransform>();
+        Canvas = GameObject.Find("Canvas").GetComponent<RectTransform>();
+        MunePanel = Canvas.transform.GetChild(4).GetComponent<RectTransform>();
         MuneImage = MunePanel.transform.GetChild(0).GetComponent<RectTransform>();
         SoundMune = MunePanel.transform.GetChild(1).GetComponent<RectTransform>();
     }

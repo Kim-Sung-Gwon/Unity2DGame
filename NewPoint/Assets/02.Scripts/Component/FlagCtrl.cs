@@ -14,7 +14,7 @@ public class FlagCtrl : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         AniClip = Resources.Load<AnimationClip>("Animation/ChechpointStart Animation");
-        ClearPanel = GameObject.Find("Canvas_JoyStick").transform.GetChild(5).GetComponent<RectTransform>();
+        ClearPanel = GameObject.Find("Canvas").transform.GetChild(5).GetComponent<RectTransform>();
     }
 
     private void OnTriggerEnter2D(Collider2D col)

@@ -12,8 +12,8 @@ public class PlayerInput : MonoBehaviour
     public Rigidbody2D rb;
 
     Vector2 moveDir = Vector2.zero;
-    [SerializeField] private float moveSpeed = 4;
-    [SerializeField] private float jumpPower = 5;
+    public float moveSpeed = 4;
+    public float jumpPower = 5;
 
     public int JumpCount;
 
@@ -56,10 +56,12 @@ public class PlayerInput : MonoBehaviour
             rb.gravityScale = 0f;
         }
         else if (playerDamage.isLadder == false)
+        {
             rb.gravityScale = 1f;
+        }
     }
 
-    public void OnMove(InputValue value)
+    void OnMove(InputValue value)
     {
         Vector2 dir = value.Get<Vector2>();
         moveDir = new Vector2(dir.x * moveSpeed, dir.y * moveSpeed);
@@ -68,7 +70,7 @@ public class PlayerInput : MonoBehaviour
         playerAni.MoveAni(dir);
     }
 
-    public void OnJump()
+    void OnJump()
     {
         if (JumpCount < 2)
         {

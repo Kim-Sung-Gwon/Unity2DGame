@@ -10,18 +10,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private RectTransform GameUI;
 
     public Text playTime;
-    public RectTransform ItemPanel;
-    public Text ItemCount;
-    public Image ItemImage;
     public Text DieCountText;
 
     void Start()
     {
-        GameUI = GameObject.Find("Canvas_JoyStick").GetComponent<RectTransform>();
-        playTime = GameUI.transform.GetChild(3).GetComponent<Text>();
-        ItemPanel = GameUI.transform.GetChild(4).GetComponent <RectTransform>();
-        ItemImage = ItemPanel.GetChild(0).GetComponent<Image>();
-        ItemCount = ItemPanel.GetChild(1).GetComponent<Text>();
-        DieCountText = ItemPanel.GetChild(2).GetComponent<Text>();
+        if (Instance == null) Instance = this;
+        else if (Instance != this) Destroy(gameObject);
+
+        GameUI = GameObject.Find("Canvas").GetComponent<RectTransform>();
+        playTime = GameUI.transform.GetChild(2).GetComponent<Text>();
+        DieCountText = GameUI.transform.GetChild(3).GetComponent<Text>();
     }
 }
