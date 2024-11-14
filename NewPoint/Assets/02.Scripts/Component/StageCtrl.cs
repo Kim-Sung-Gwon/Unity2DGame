@@ -17,13 +17,14 @@ public class StageCtrl : MonoBehaviour
         Panel_3 = GameObject.Find("Canvas").transform.GetChild(2).GetComponent<RectTransform>();
     }
 
-
+    // 판넬_1이 활성화 되었는지 판단
     public void OnPanle_1(bool isOpen)
     {
         Panel_1.gameObject.SetActive(isOpen);
         Panel_2.gameObject.SetActive(!isOpen);
     }
 
+    // 판넬_2가 활성화 되었는지 판단
     public void OnPanle_2(bool isOpen)
     {
         Panel_2.gameObject.SetActive(isOpen);

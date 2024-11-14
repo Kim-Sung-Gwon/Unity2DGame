@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        // 값이 비어있는지 판단
         if (Instance == null) Instance = this;
         else if (Instance != this) Destroy(gameObject);
 

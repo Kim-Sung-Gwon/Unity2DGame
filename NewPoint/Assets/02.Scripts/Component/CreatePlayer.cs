@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CreatePlayer : MonoBehaviour
 {
-    [SerializeField] private Transform PlayerTr;
-    [SerializeField] private Transform SpawnPoint;
+    private Transform PlayerTr;
+    private Transform SpawnPoint;
 
     private void Awake()
     {
@@ -17,6 +17,7 @@ public class CreatePlayer : MonoBehaviour
 
     public void Createplayer()
     {
+        // 시작시 플레이어 캐릭터가 생성될 위치
         Instantiate(PlayerTr, SpawnPoint.position, SpawnPoint.rotation);
     }
 

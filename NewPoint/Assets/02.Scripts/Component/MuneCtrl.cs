@@ -24,6 +24,7 @@ public class MuneCtrl : MonoBehaviour
 
     public void Pause()
     {
+        // bool 값이 true, false를 왕복
         isPause = !isPause;
         if (Canvas.gameObject.activeSelf)
         {

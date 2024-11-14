@@ -10,6 +10,7 @@ TagManager:
   - Blink
   - DieZone
   - Ladder
+  - On
   layers:
   - Default
   - TransparentFX

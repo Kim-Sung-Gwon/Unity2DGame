@@ -53,6 +53,7 @@ public class PlayScene : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
+    // 모든 어플리 캐이션에서 플레이를 종료 시키는 함수
     public void Quit()
     {
 #if UNITY_EDITOR

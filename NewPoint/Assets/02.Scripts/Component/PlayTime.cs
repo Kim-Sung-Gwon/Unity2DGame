@@ -17,6 +17,7 @@ public class PlayTime : MonoBehaviour
 
     void Playtime()
     {
+        // 시작 후 경과한 플레이 타임
         sec += Time.deltaTime;
         if (sec > 59f)
         {

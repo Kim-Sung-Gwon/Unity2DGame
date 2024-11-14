@@ -28,6 +28,7 @@ public class FlagCtrl : MonoBehaviour
 
     IEnumerator AniClick()
     {
+        // 애니메이션 클립의 시간 만큼 대기
         yield return new WaitForSeconds(AniClip.length);
         ClearPanel.gameObject.SetActive(true);
         Time.timeScale = 0;
