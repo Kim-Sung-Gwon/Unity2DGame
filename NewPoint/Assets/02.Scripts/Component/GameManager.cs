@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     }
 
     // 같은 종류의 코드 사용을 줄이기 위해 string과 GameObject를 추가
-    public void ReCreateObject(string objName, GameObject obj)
+    public void ReCreateObject(string objName, Transform obj)
     {
         Transform objPoint = GameObject.Find(objName).transform;
         if (obj.gameObject.activeSelf == false)
@@ -37,11 +37,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ListPoint(string name, List<Transform> points)
-    {
-        var patrolpoint = GameObject.Find(name);
-        if (patrolpoint != null)
-            patrolpoint.GetComponentsInChildren<Transform>(points);
-        points.RemoveAt(0);
-    }
+    //public void ListPoint(string name, List<Transform> points)
+    //{
+    //    var patrolpoint = GameObject.Find(name);
+    //    if (patrolpoint != null)
+    //        patrolpoint.GetComponentsInChildren<Transform>(points);
+    //    points.RemoveAt(0);
+    //}
 }

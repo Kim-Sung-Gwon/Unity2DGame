@@ -6,7 +6,7 @@ public class PlayerDamage : MonoBehaviour
 {
     [SerializeField] private PlayerAnimator animator;
     [SerializeField] private PlayerInput playerinput;
-    [SerializeField] private GameObject tr;
+    [SerializeField] private Transform tr;
 
     public float TramJump = 2;
     public float UpPower = 3;
@@ -17,7 +17,7 @@ public class PlayerDamage : MonoBehaviour
     {
         animator = GetComponent<PlayerAnimator>();
         playerinput = GetComponent<PlayerInput>();
-        tr = GetComponent<GameObject>();
+        tr = GetComponent<Transform>();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -66,14 +66,26 @@ public class PlayerDamage : MonoBehaviour
         // simulated를 비활성화 함으로서 리디지 바디로 움직이는 값을 비활성화함
         playerinput.rb.simulated = false;
         animator.DieAni();
-        GameManager.Instance.Diecount();
+        //GameManager.Instance.Diecount();
         yield return new WaitForSeconds(animator.clip.length);
         gameObject.SetActive(false);
 
         // 지정 위치에서 자신을 활성화함
-        GameManager.Instance.ReCreateObject("SpawnPoint", tr);
+        //GameManager.Instance.ReCreateObject("SpawnPoint", tr);
+        ReCreateObject("SpawnPoint", tr);
         playerinput.JumpCount = 0;
         // 리디지 바디를 다시 활성화
         playerinput.rb.simulated = true;
+    }
+
+    public void ReCreateObject(string objName, Transform obj)
+    {
+        Transform objPoint = GameObject.Find(objName).transform;
+        if (obj.gameObject.activeSelf == false)
+        {
+            obj.transform.position = objPoint.position;
+            obj.transform.rotation = objPoint.rotation;
+            obj.gameObject.SetActive(true);
+        }
     }
 }

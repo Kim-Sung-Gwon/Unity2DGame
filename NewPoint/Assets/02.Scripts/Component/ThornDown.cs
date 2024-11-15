@@ -5,21 +5,17 @@ using UnityEngine;
 public class ThornDown : MonoBehaviour
 {
     [SerializeField] private Transform tr;
-    [SerializeField] private float speed;
 
     void Awake()
     {
         tr = GetComponent<Transform>();
     }
 
-    private void Update()
+    private void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.DrawRay(tr.position, Vector3.down * 5, Color.red);
-        RaycastHit2D ray = Physics2D.Raycast(tr.position, Vector3.down, 5, LayerMask.GetMask("Player"));
-        if (ray.collider != null)
+        if (col.gameObject.CompareTag("DieZone") || col.gameObject.CompareTag("Player") || col.gameObject.CompareTag(""))
         {
-            tr.Translate(Vector3.down * speed * Time.deltaTime);
-            Debug.Log("°¨Áö");
+            this.gameObject.SetActive(false);
         }
     }
 }
